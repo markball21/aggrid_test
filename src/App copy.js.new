@@ -1,0 +1,69 @@
+// import logo from './logo.svg';
+import './App.css';
+
+import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
+import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
+
+
+  // Row Data: The data to be displayed.
+  const rowData = [
+    { make: "Tesla", model: "Model Y", price: 64950, electric: true },
+    { make: "Ford", model: "F-Series", price: 33850, electric: false },
+    { make: "Toyota", model: "Corolla", price: 29600, electric: false },
+  ];
+  
+  // Column Definitions: Defines the columns to be displayed.
+  // const colDefs = [
+  //   { field: "make" },
+  //   { field: "model" },
+  //   { field: "price" },
+  //   { field: "electric" }
+  // ];
+
+  const columnDefs = [
+  ];
+
+  function dynamicallyConfigureColumnsFromObject(anObject){
+    const colDefs = gridOptions.api.getColumnDefs();
+    colDefs.length=0;
+    const keys = Object.keys(anObject)
+    keys.forEach(key => colDefs.push({field : key}));
+    gridOptions.api.setColumnDefs(colDefs);
+}
+
+fetch('https://www.ag-grid.com/example-assets/row-data.json').
+    then(function (response) {
+    
+        return response.json();
+        
+    }).then(function (data) {
+    
+        // set the column headers from the data
+        
+        const colDefs = gridOptions.api.getColumnDefs();
+        colDefs.length=0;
+        const keys = Object.keys(data[0])
+        keys.forEach(key => colDefs.push({field : key}));
+        gridOptions.api.setColumnDefs(colDefs);
+        
+        // add the data to the grid
+        
+        gridOptions.api.setRowData(data);
+    })
+
+function App() {
+  return (
+    <div
+         className="ag-theme-quartz" // applying the grid theme
+   style={{ height: 500 }} // the grid will fill the size of the parent container
+  >
+    <AgGridReact
+        rowData={rowData}
+        columnDefs={colDefs}
+    />
+    </div>
+  );
+}
+
+export default App;
