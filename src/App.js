@@ -17,6 +17,8 @@ const App = () => {
         field: key,
       }));
       gridOptions.rowData = data;
+      console.log('Row Data:', gridOptions.rowData);
+      console.log('Column Data:', gridOptions.columnDefs);
       const gridDiv = document.querySelector('#grid');
       createGrid(gridDiv, gridOptions);
     } catch (error) {
