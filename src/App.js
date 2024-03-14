@@ -13,27 +13,28 @@ const gridOptions = {
 };
 
 // Fetch data from the JSON API endpoint
-fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
-    .then(response => response.json())
-    .then(data => {
-        // Update column definitions
-        gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
-            headerName: key,
-            field: key,
-        }));
+async function fetchData() {
+  try {
+    const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
+    const data = await response.json();
+    // Update column definitions
+    gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
+      headerName: key,
+      field: key,
+    }));
 
-        // Update row data
-        gridOptions.rowData = data;
+    // Update row data
+    gridOptions.rowData = data;
 
-        // Render the ag-Grid table
-        const gridDiv = document.querySelector('#grid');
-        new Grid(gridDiv, gridOptions);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-
+    // Render the ag-Grid table
+    const gridDiv = document.querySelector('#grid');
+    new Grid(gridDiv, gridOptions);
+  } catch (error) {
+    console.error('Error:', error);
   }
+}
+
+fetchData();
 
 
 // import './App.css';
