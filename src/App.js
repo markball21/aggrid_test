@@ -2,41 +2,32 @@ import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { Grid } from 'ag-grid-community';
 
-// Import ag-Grid dependencies
-
 const App = () => {
-
-// Create an ag-Grid instance
-const gridOptions = {
+  const gridOptions = {
     columnDefs: [],
     rowData: [],
+  };
+
+  async function fetchData() {
+    try {
+      const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
+      const data = await response.json();
+      gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
+        headerName: key,
+        field: key,
+      }));
+      gridOptions.rowData = data;
+      const gridDiv = document.querySelector('#grid');
+      new Grid(gridDiv, gridOptions);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  fetchData();
 };
 
-// Fetch data from the JSON API endpoint
-async function fetchData() {
-  try {
-    const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
-    const data = await response.json();
-    // Update column definitions
-    gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
-      headerName: key,
-      field: key,
-    }));
-
-    // Update row data
-    gridOptions.rowData = data;
-
-    // Render the ag-Grid table
-    const gridDiv = document.querySelector('#grid');
-    new Grid(gridDiv, gridOptions);
-  } catch (error) {
-    console.error('Error:', error);
-  }
-}
-
-fetchData();
-
-}
+export default App;
 
 // import './App.css';
 // import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
