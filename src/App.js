@@ -2,34 +2,39 @@ import './App.css';
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { createGrid } from 'ag-grid-community';
+import React, { useEffect, useState } from 'react';
 
 const App = () => {
-  const gridOptions = {
-    columnDefs: [],
-    rowData: [],
-  };
+  const [rowData, setRowData] = useState([]);
+  const [columnDefs, setColumnDefs] = useState([]);
 
-  function fetchData() {
-    fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
-      .then(response => response.json())
-      .then(data => {
-        gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
-          headerName: key,
-          field: key,
-        }));
-        gridOptions.rowData = data;
-        console.log('Row Data:', gridOptions.rowData);
-        console.log('Column Data:', gridOptions.columnDefs);
-        const gridDiv = document.querySelector('#grid');
-        createGrid(gridDiv, gridOptions);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
+        const data = await response.json();
+        console.log('Fetched data:', data);
+        setRowData(data);
+        const keys = Object.keys(data[0]);
+        console.log('Keys:', keys);
+        const newColumnDefs = keys.map(key => ({ headerName: key, field: key }));
+        setColumnDefs(newColumnDefs);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
 
-  fetchData();
+    fetchData();
+  }, []);
+
+  return (
+    <div className="ag-theme-alpine" style={{ height: '100%', width: '100%' }}>
+      <AgGridReact
+        rowData={rowData}
+        columnDefs={columnDefs}
+      />
+    </div>
+  );
 };
 
 export default App;
