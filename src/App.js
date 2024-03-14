@@ -4,6 +4,8 @@ import { Grid } from 'ag-grid-community';
 
 // Import ag-Grid dependencies
 
+const App = () => {
+
 // Create an ag-Grid instance
 const gridOptions = {
     columnDefs: [],
@@ -31,7 +33,7 @@ fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
         console.error('Error:', error);
     });
 
-
+  }
 
 
 // import './App.css';
@@ -91,5 +93,5 @@ fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
 //   );
 // };
 
-// export default App;
+export default App;
 
