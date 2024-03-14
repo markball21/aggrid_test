@@ -27,6 +27,9 @@ const App = () => {
     fetchData();
   }, []);
 
+  console.log('rowData:', rowData);
+  console.log('columnDefs:', columnDefs);
+
   return (
     <div className="ag-theme-alpine" style={{ height: '100%', width: '100%' }}>
       <AgGridReact
