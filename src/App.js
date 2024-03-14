@@ -36,6 +36,7 @@ async function fetchData() {
 
 fetchData();
 
+}
 
 // import './App.css';
 // import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
