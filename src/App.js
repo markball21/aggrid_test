@@ -10,22 +10,23 @@ const App = () => {
     rowData: [],
   };
 
-  async function fetchData() {
-    try {
-      const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
-      const data = await response.json();
-      gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
-        headerName: key,
-        field: key,
-      }));
-      gridOptions.rowData = data;
-      console.log('Row Data:', gridOptions.rowData);
-      console.log('Column Data:', gridOptions.columnDefs);
-      const gridDiv = document.querySelector('#grid');
-      createGrid(gridDiv, gridOptions);
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  function fetchData() {
+    fetch('https://www.ag-grid.com/example-assets/space-mission-data.json')
+      .then(response => response.json())
+      .then(data => {
+        gridOptions.columnDefs = Object.keys(data[0]).map(key => ({
+          headerName: key,
+          field: key,
+        }));
+        gridOptions.rowData = data;
+        console.log('Row Data:', gridOptions.rowData);
+        console.log('Column Data:', gridOptions.columnDefs);
+        const gridDiv = document.querySelector('#grid');
+        createGrid(gridDiv, gridOptions);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }
 
   fetchData();
