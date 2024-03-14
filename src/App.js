@@ -48,7 +48,6 @@ useEffect(() => {
   getRecords();
 }, []);
    // eslint-disable-next-line react-hooks/exhaustive-deps
-}
 
   // Container: Defines the grid's theme & dimensions.
   return (
@@ -65,7 +64,7 @@ useEffect(() => {
           />
     </div>
   );
-
+    }
 
 export default App;
 
