@@ -17,7 +17,7 @@ const App = () => {
         setRowData(data);
         const keys = Object.keys(data[0]);
         console.log('Keys:', keys);
-        const newColumnDefs = keys.map(key => ({ headerName: key, field: key, sortable: true, filter: true }));
+        const newColumnDefs = keys.map(key => ({ headerName: key.toUpperCase(), field: key, sortable: true, filter: true }));
         setColumnDefs(newColumnDefs);
       } catch (error) {
         console.error('Error fetching data:', error);
