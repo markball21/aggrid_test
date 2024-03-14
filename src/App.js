@@ -9,6 +9,7 @@ import React, { useState, useEffect } from 'react';
 const App = () => {
   const [rowData, setRowData] = useState([]);
   const [columnDefs, setColumnDefs] = useState([]);
+  const [gridApi, setGridApi] = useState(null); // Add gridApi state
 
   const gridOptions = {
     enableSorting: true,
@@ -19,6 +20,7 @@ const App = () => {
   const onGridReady = (params) => {
     gridOptions.api = params.api;
     gridOptions.columnApi = params.columnApi;
+    setGridApi(params.api); // Set gridApi state
   };
 
   useEffect(() => {
@@ -32,14 +34,16 @@ const App = () => {
         console.log('Keys:', keys);
         const newColumnDefs = keys.map(key => ({ field: key }));
         setColumnDefs(newColumnDefs);
-        gridOptions.api.setRowData(data);
+        if (gridApi) { // Check if gridApi is defined
+          gridApi.setRowData(data);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
 
     getRecords();
-  }, []);
+  }, [gridApi]); // Add gridApi as a dependency
 
   return (
     <div className="ag-theme-quartz" style={{ width: '100%', height: '100%' }}>
