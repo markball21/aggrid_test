@@ -4,11 +4,6 @@ import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import { AgGridReact } from 'ag-grid-react';
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-quartz.css";
-import React, { useState, useEffect } from 'react';
 
 // Create new GridExample component
 const App = () => {
