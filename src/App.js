@@ -31,7 +31,7 @@ const App = () => {
   console.log('columnDefs:', columnDefs);
 
   return (
-    <div className="ag-theme-alpine" style={{ height: '100%', width: '100%' }}>
+    <div className="ag-theme-alpine" style={{ height: 500, width: 500 }}>
       <AgGridReact
         rowData={rowData}
         columnDefs={columnDefs}
