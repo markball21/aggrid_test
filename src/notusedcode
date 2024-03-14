@@ -1,0 +1,37 @@
+
+// function App() {
+//   return (
+//     <div
+//          className="ag-theme-quartz" // applying the grid theme
+//    style={{ height: 500 }} // the grid will fill the size of the parent container
+//   >
+//     <AgGridReact
+//         // rowData={rowData}
+//         // columnDefs={colDefs}
+//         onGridReady={onGridReady}
+//     />
+//     </div>
+//   );
+// }
+
+    // { make: 'Tesla', model: 'Model Y', price: 64950, electric: true },
+    // { make: 'Ford', model: 'F-Series', price: 33850, electric: false },
+    // { make: 'Toyota', model: 'Corolla', price: 29600, electric: false },
+
+      // const onGridReady=(params)=>{
+  //   console.log("grid is ready")
+  //   fetch('https://www.ag-grid.com/example-assets/row-data.json').then(resp=>resp.json())
+
+    // .then(resp=>params.applyTransaction(Clear))
+    // .then(resp=>params.api.applyTransaction({add:resp})
+  // )}
+
+  // const [colDefs, setColDefs] = useState([
+  //   { field: 'make' },
+  //   { field: 'model' },
+  //   { field: 'price' },
+  //   { field: 'electric' },
+  // ]);
+
+  // .then(colDefs => setColDefs(colDefs));
+  // .then(rowData => setRowData(rowData)) {// Update state of `rowData`
