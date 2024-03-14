@@ -22,6 +22,7 @@ const App = () => {
       try {
         const response = await fetch('https://www.ag-grid.com/example-assets/space-mission-data.json');
         const data = await response.json();
+        console.log('Fetched data:', data); // Add console output
         setRowData(data);
         const colDefs = gridOptions.api.getColumnDefs();
         colDefs.length = 0;
@@ -38,9 +39,12 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
+
   return (
     <div className="ag-theme-quartz" style={{ width: '100%', height: '100%' }}>
       <AgGridReact rowData={rowData} columnDefs={columnDefs} />
+      {console.log('rowData:', rowData)}
+      {console.log('columnDefs:', columnDefs)}
     </div>
   );
 };
