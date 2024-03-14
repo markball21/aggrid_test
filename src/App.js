@@ -1,6 +1,6 @@
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { Grid } from 'ag-grid-community';
+import { createGrid } from 'ag-grid-community';
 
 const App = () => {
   const gridOptions = {
@@ -18,7 +18,7 @@ const App = () => {
       }));
       gridOptions.rowData = data;
       const gridDiv = document.querySelector('#grid');
-      new Grid(gridDiv, gridOptions);
+      createGrid(gridDiv, gridOptions);
     } catch (error) {
       console.error('Error:', error);
     }
