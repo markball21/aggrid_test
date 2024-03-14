@@ -29,7 +29,7 @@ const App = () => {
       });
   }
 
-  // fetchData();
+  fetchData();
 };
 
 export default App;
