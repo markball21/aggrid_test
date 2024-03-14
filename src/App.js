@@ -2,6 +2,7 @@ import './App.css';
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
+import 'ag-grid-enterprise'; // Import ag-grid-enterprise module
 import React, { useEffect, useState, useRef } from 'react';
 import { exportDataAsCsv } from 'ag-grid-community';
 
@@ -51,6 +52,7 @@ const App = () => {
         rowData={rowData}
         columnDefs={columnDefs}
         onGridReady={onGridReady}
+        enableCharts // Enable integrated charts
       />
     </div>
   );
