@@ -2,7 +2,6 @@ import './App.css';
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import 'ag-grid-enterprise'; // Import ag-grid-enterprise module
 import React, { useEffect, useState, useRef } from 'react';
 import { exportDataAsCsv } from 'ag-grid-community';
 
@@ -20,7 +19,7 @@ const App = () => {
         setRowData(data);
         const keys = Object.keys(data[0]);
         console.log('Keys:', keys);
-        const newColumnDefs = keys.map(key => ({ headerName: key.toUpperCase(), field: key, sortable: true, filter: true, resizable: true, movable: true, editable: true }));
+        const newColumnDefs = keys.map(key => ({ headerName: key.toUpperCase(), field: key, sortable: true, filter: true, resizable: true, movable: true }));
         setColumnDefs(newColumnDefs);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,7 +51,6 @@ const App = () => {
         rowData={rowData}
         columnDefs={columnDefs}
         onGridReady={onGridReady}
-        enableCharts // Enable integrated charts
       />
     </div>
   );
