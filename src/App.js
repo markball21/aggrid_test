@@ -24,7 +24,8 @@ const App = () => {
         const data = await response.json();
         console.log('Fetched data:', data); // Add console output
         setRowData(data);
-        const colDefs = gridOptions.api.getColumnDefs();
+        const colDefs = []
+        colDefs = gridOptions.api.getColumnDefs();
         colDefs.length = 0;
         const keys = Object.keys(data[0]);
         console.log('Keys:', keys); // Add console output for keys
