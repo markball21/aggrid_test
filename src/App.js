@@ -43,8 +43,8 @@ const App = () => {
   return (
     <div className="ag-theme-quartz" style={{ width: '100%', height: '100%' }}>
       <AgGridReact rowData={rowData} columnDefs={columnDefs} />
-      {console.log('rowData:', rowData)}
-      {console.log('columnDefs:', columnDefs)}
+      {/* {console.log('rowData:', rowData)}
+      {console.log('columnDefs:', columnDefs)} */}
     </div>
   );
 };
